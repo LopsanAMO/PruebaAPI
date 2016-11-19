@@ -41,7 +41,7 @@ private   Retrofit retrofit;
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.68:8000/apiv1/")
+                .baseUrl("http://52.39.36.176:8000/apiv1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         obtenerDatos();
@@ -64,7 +64,7 @@ private   Retrofit retrofit;
 
                                                  for (int i =0; i<listausuario.size(); i++){
                                                      Usuario u = listausuario.get(i);
-                                                     Log.i(TAG, "Usuairo:"+ u.getUsername());
+                                                     Log.i(TAG, "Usuairo:"+ u.getUser());
 
                                                  }
 

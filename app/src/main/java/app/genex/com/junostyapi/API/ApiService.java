@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
-    @GET("/horario")
+    @GET("horario/?format=json")
     Call<UsuarioRespuesta> obtenerListaUsuario();
 }
