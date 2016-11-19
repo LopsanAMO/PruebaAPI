@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import app.genex.com.junostyapi.models.Usuario;
+import app.genex.com.junostyapi.models.UsuarioRespuesta;
 
 /**
  * Created by Invitado1 on 19/11/2016.
@@ -16,7 +17,7 @@ import app.genex.com.junostyapi.models.Usuario;
 
 public class ListaUsuarioAdapter extends RecyclerView.Adapter<ListaUsuarioAdapter.ViewHolder>{
 
-    private ArrayList<Usuario> dataset;
+    private ArrayList<UsuarioRespuesta> dataset;
 
     public ListaUsuarioAdapter(){
         dataset = new ArrayList<>();
@@ -31,8 +32,9 @@ public class ListaUsuarioAdapter extends RecyclerView.Adapter<ListaUsuarioAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-    Usuario u = dataset.get(position);
-        holder.nombreTextView.setText(u.getUsername());
+        UsuarioRespuesta u = dataset.get(position);
+        Usuario usuario =  u.getUser();
+        holder.nombreTextView.setText(usuario.getUsername());
         
 
     }
@@ -42,7 +44,7 @@ public class ListaUsuarioAdapter extends RecyclerView.Adapter<ListaUsuarioAdapte
         return 0;
     }
 
-    public void adicionarlsitaUsario(ArrayList<Usuario> listausuario) {
+    public void adicionarlsitaUsario(ArrayList<UsuarioRespuesta> listausuario) {
         dataset.addAll(listausuario);
         notifyDataSetChanged();
     }

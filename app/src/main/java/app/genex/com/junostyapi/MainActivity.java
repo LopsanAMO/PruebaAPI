@@ -35,10 +35,11 @@ private   Retrofit retrofit;
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listaUsuarioAdapter = new ListaUsuarioAdapter();
-        recyclerView.setAdapter(listaUsuarioAdapter);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(listaUsuarioAdapter);
+
 
 
         retrofit = new Retrofit.Builder()
@@ -58,17 +59,17 @@ private   Retrofit retrofit;
                                          @Override
                                          public void onResponse(retrofit2.Call<List<UsuarioRespuesta>> call, Response<List<UsuarioRespuesta>>response) {
                                              if(response.isSuccessful()) {
-                                                 List<UsuarioRespuesta> usuarioRespuesta = response.body();
-                                                 Usuario usuario = usuarioRespuesta.get(0).getUser();
+                                                     List<UsuarioRespuesta> usuarioRespuesta = response.body();
+//                                                 Usuario usuario = usuarioRespuesta.get(0).getUser();
 
-                                                 //listaUsuarioAdapter.adicionarlsitaUsario(listausuario);
+                                                 listaUsuarioAdapter.adicionarlsitaUsario((ArrayList<UsuarioRespuesta>) usuarioRespuesta);
 
 
                                                  /*for (int i =0; i<listausuario.size(); i++){
                                                      Usuario u = listausuario.get(i);
                                                      Log.i(TAG, "Usuairo:"+ u.getUsername());
                                                  }*/
-                                                 Log.i(TAG, "Usuario: "+ usuario.getUsername());
+//                                                 Log.i(TAG, "Usuario: "+ usuario.getUsername());
 
 
 
