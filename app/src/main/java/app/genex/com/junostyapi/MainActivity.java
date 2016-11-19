@@ -59,15 +59,16 @@ private   Retrofit retrofit;
                                          public void onResponse(retrofit2.Call<List<UsuarioRespuesta>> call, Response<List<UsuarioRespuesta>>response) {
                                              if(response.isSuccessful()) {
                                                  List<UsuarioRespuesta> usuarioRespuesta = response.body();
-                                                 ArrayList<Usuario> listausuario = usuarioRespuesta.get(0).getResultado();
-                                                 listaUsuarioAdapter.adicionarlsitaUsario(listausuario);
+                                                 Usuario usuario = usuarioRespuesta.get(0).getUser();
+
+                                                 //listaUsuarioAdapter.adicionarlsitaUsario(listausuario);
 
 
-                                                 for (int i =0; i<listausuario.size(); i++){
+                                                 /*for (int i =0; i<listausuario.size(); i++){
                                                      Usuario u = listausuario.get(i);
                                                      Log.i(TAG, "Usuairo:"+ u.getUsername());
-
-                                                 }
+                                                 }*/
+                                                 Log.i(TAG, "Usuario: "+ usuario.getUsername());
 
 
 

@@ -7,17 +7,13 @@ import java.util.ArrayList;
  */
 
 public class Usuario {
-   private String username;
+  private String username;
 
-    public String getUserme() {
-        return username;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public void setUsername(String user) {
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 }
