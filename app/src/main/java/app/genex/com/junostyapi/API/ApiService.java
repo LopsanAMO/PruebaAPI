@@ -1,5 +1,7 @@
 package app.genex.com.junostyapi.API;
 
+import java.util.List;
+
 import app.genex.com.junostyapi.models.UsuarioRespuesta;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -11,5 +13,5 @@ import retrofit2.http.GET;
 public interface ApiService {
 
     @GET("horario/?format=json")
-    Call<UsuarioRespuesta> obtenerListaUsuario();
+    Call<List<UsuarioRespuesta>> obtenerListaUsuario();
 }

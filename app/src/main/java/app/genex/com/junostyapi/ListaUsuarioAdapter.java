@@ -32,7 +32,7 @@ public class ListaUsuarioAdapter extends RecyclerView.Adapter<ListaUsuarioAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
     Usuario u = dataset.get(position);
-        holder.nombreTextView.setText(u.getUser());
+        holder.nombreTextView.setText(u.getUsername());
     }
 
     @Override

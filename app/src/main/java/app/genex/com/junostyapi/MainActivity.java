@@ -11,6 +11,7 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import app.genex.com.junostyapi.API.ApiService;
 import app.genex.com.junostyapi.models.Usuario;
@@ -51,20 +52,20 @@ private   Retrofit retrofit;
     private void obtenerDatos(){
 
         ApiService service = retrofit.create(ApiService.class);
-        retrofit2.Call<UsuarioRespuesta> usuarioRespuestaCall = service.obtenerListaUsuario();
+        retrofit2.Call<List<UsuarioRespuesta>> usuarioRespuestaCall = service.obtenerListaUsuario();
 
-        usuarioRespuestaCall.enqueue(new Callback<UsuarioRespuesta>() {
+        usuarioRespuestaCall.enqueue(new Callback<List<UsuarioRespuesta>>() {
                                          @Override
-                                         public void onResponse(retrofit2.Call<UsuarioRespuesta> call, Response<UsuarioRespuesta> response) {
+                                         public void onResponse(retrofit2.Call<List<UsuarioRespuesta>> call, Response<List<UsuarioRespuesta>>response) {
                                              if(response.isSuccessful()) {
-                                                 UsuarioRespuesta usuarioRespuesta = response.body();
-                                                 ArrayList<Usuario> listausuario = usuarioRespuesta.getResultado();
+                                                 List<UsuarioRespuesta> usuarioRespuesta = response.body();
+                                                 ArrayList<Usuario> listausuario = usuarioRespuesta.get(0).getResultado();
                                                  listaUsuarioAdapter.adicionarlsitaUsario(listausuario);
 
 
                                                  for (int i =0; i<listausuario.size(); i++){
                                                      Usuario u = listausuario.get(i);
-                                                     Log.i(TAG, "Usuairo:"+ u.getUser());
+                                                     Log.i(TAG, "Usuairo:"+ u.getUsername());
 
                                                  }
 
@@ -81,7 +82,7 @@ private   Retrofit retrofit;
                                          }
 
                                          @Override
-                                         public void onFailure(retrofit2.Call<UsuarioRespuesta> call, Throwable t) {
+                                         public void onFailure(retrofit2.Call<List<UsuarioRespuesta>>call, Throwable t) {
                                              Log.e(TAG, "onFailure : "+ t.getMessage());
                                          }
                                      }
