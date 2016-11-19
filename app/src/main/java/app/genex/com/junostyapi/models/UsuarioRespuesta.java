@@ -7,13 +7,13 @@ import java.util.ArrayList;
  */
 
 public class UsuarioRespuesta {
-    private ArrayList<Usuario> resultado;
+    private ArrayList<Usuario> user;
 
     public ArrayList<Usuario> getResultado() {
-        return resultado;
+        return user;
     }
 
     public void setResultado(ArrayList<Usuario> resultado) {
-        this.resultado = resultado;
+        this.user = resultado;
     }
 }
