@@ -3,6 +3,7 @@ package app.genex.com.junostyapi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telecom.Call;
 import android.util.Log;
@@ -27,7 +28,7 @@ private   Retrofit retrofit;
 
     private RecyclerView recyclerView;
     private ListaUsuarioAdapter listaUsuarioAdapter;
-
+    ArrayList<UsuarioRespuesta> listita;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +36,14 @@ private   Retrofit retrofit;
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listaUsuarioAdapter = new ListaUsuarioAdapter();
-        recyclerView.setHasFixedSize(true);
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+
+
+        //GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listaUsuarioAdapter);
-
-
-
+        //recyclerView.setHasFixedSize(true);
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://52.39.36.176:8000/apiv1/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -59,17 +61,17 @@ private   Retrofit retrofit;
                                          @Override
                                          public void onResponse(retrofit2.Call<List<UsuarioRespuesta>> call, Response<List<UsuarioRespuesta>>response) {
                                              if(response.isSuccessful()) {
-                                                     List<UsuarioRespuesta> usuarioRespuesta = response.body();
-//                                                 Usuario usuario = usuarioRespuesta.get(0).getUser();
 
-                                                 listaUsuarioAdapter.adicionarlsitaUsario((ArrayList<UsuarioRespuesta>) usuarioRespuesta);
-
+                                                 ArrayList<UsuarioRespuesta> usuarioRespuesta = (ArrayList<UsuarioRespuesta>) response.body();
+                                                 Usuario usuario = usuarioRespuesta.get(0).getUser();
+                                                 listaUsuarioAdapter.adicionarlsitaUsario(usuarioRespuesta);
+                                                 //listaUsuarioAdapter.adicionarlsitaUsario(listausuario);
 
                                                  /*for (int i =0; i<listausuario.size(); i++){
                                                      Usuario u = listausuario.get(i);
                                                      Log.i(TAG, "Usuairo:"+ u.getUsername());
                                                  }*/
-//                                                 Log.i(TAG, "Usuario: "+ usuario.getUsername());
+                                                 Log.i(TAG, "Usuario: "+ usuario.getUsername());
 
 
 

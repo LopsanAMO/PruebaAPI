@@ -8,8 +8,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/nombreTextView"
         android:gravity="center_horizontal"
-        android:text="asda"
-        android:textAllCaps="true"
         />
 
 </LinearLayout>
