@@ -18,10 +18,13 @@ import app.genex.com.junostyapi.models.UsuarioRespuesta;
 public class ListaUsuarioAdapter extends RecyclerView.Adapter<ListaUsuarioAdapter.ViewHolder>{
 
     private ArrayList<UsuarioRespuesta> dataset;
+    private ArrayList<Usuario> usuario;
 
     public ListaUsuarioAdapter(){
         dataset = new ArrayList<>();
     }
+
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,14 +36,14 @@ public class ListaUsuarioAdapter extends RecyclerView.Adapter<ListaUsuarioAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Usuario u = dataset.get(position).getUser();
-        holder.nombreTextView.setText("hola");
+        holder.nombreTextView.setText(u.getUsername());
 
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dataset.size();
     }
 
     public void adicionarlsitaUsario(ArrayList<UsuarioRespuesta> listausuario) {
